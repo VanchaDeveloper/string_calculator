@@ -2,5 +2,9 @@
 
 /// Checks if you are awesome. Spoiler: you are.
 class StringCalculator {
-  // TODO: Implement String Calculator
+
+  static int add(String numbers) {
+    return 0;
+  }
+  
 }
