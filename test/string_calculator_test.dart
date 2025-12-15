@@ -23,6 +23,6 @@ void main() {
   });
 
   test('custom delimiter', () {
-  expect(StringCalculator.add('//;\n1;2'), 3);
-});
+    expect(StringCalculator.add('//;\n1;2'), 3);
+  });
 }
