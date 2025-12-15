@@ -47,4 +47,12 @@ void main() {
       ),
     );
   });
+
+  test('ignore empty values', () {
+    expect(StringCalculator.add('1,\n2'), 3);
+  });
+
+  test('spaces and trailing delimiter', () {
+    expect(StringCalculator.add(' 1 , 2 , 3 , '), 6);
+  });
 }

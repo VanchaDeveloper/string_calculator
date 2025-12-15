@@ -20,7 +20,10 @@ class StringCalculator {
     var sum = 0;
 
     for (final p in parts) {
-      final value = int.parse(p);
+      if (p.trim().isEmpty) continue;
+
+      final value = int.parse(p.trim());
+
       if (value < 0) negatives.add(value);
       sum += value;
     }
