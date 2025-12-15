@@ -7,9 +7,23 @@ class StringCalculator {
 
     // Custom delimiter
     if (numbers.startsWith('//')) {
-      final delimiter = numbers[2];
-      delimiterPattern = RegExp(RegExp.escape(delimiter));
-      data = numbers.substring(numbers.indexOf('\n') + 1);
+      final headerEnd = numbers.indexOf('\n');
+      final delimiterPart = numbers.substring(2, headerEnd);
+      data = numbers.substring(headerEnd + 1);
+
+      // Multiple delimiters: //[;][|]
+      if (delimiterPart.startsWith('[')) {
+        final delimiters = RegExp(r'\[(.*?)\]')
+            .allMatches(delimiterPart)
+            .map((m) => RegExp.escape(m.group(1)!))
+            .join('|');
+
+        delimiterPattern = RegExp(delimiters);
+      }
+      // Single delimiter: //;
+      else {
+        delimiterPattern = RegExp(RegExp.escape(delimiterPart));
+      }
     }
 
     final parts = data.split(delimiterPattern);

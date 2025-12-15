@@ -48,6 +48,14 @@ void main() {
     );
   });
 
+  test('supports single custom delimiter', () {
+    expect(StringCalculator.add('//;\n1;2'), 3);
+  });
+
+  test('supports multiple custom delimiters', () {
+    expect(StringCalculator.add('//[;][|]\n1;2|3'), 6);
+  });
+
   test('ignore empty values', () {
     expect(StringCalculator.add('1,\n2'), 3);
   });
