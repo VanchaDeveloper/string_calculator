@@ -17,4 +17,12 @@ void main() {
   test('multiple numbers', () {
     expect(StringCalculator.add('1,2,3,4'), 10);
   });
+
+  test('newline delimiter', () {
+    expect(StringCalculator.add('1\n2,3'), 6);
+  });
+
+  test('custom delimiter', () {
+  expect(StringCalculator.add('//;\n1;2'), 3);
+});
 }
