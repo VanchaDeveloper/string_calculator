@@ -5,6 +5,8 @@ class StringCalculator {
   static int add(String numbers) {
     if (numbers.isEmpty) return 0;
 
+    final negatives = <int>[];
+
     var delimiterPattern = RegExp(',|\n');
     var data = numbers;
 
@@ -18,7 +20,13 @@ class StringCalculator {
     var sum = 0;
 
     for (final p in parts) {
-      sum += int.parse(p);
+      final value = int.parse(p);
+      if (value < 0) negatives.add(value);
+      sum += value;
+    }
+
+    if (negatives.isNotEmpty) {
+      throw Exception('negative numbers not allowed ${negatives.first}');
     }
     return sum;
   }

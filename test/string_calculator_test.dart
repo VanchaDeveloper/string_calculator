@@ -25,4 +25,15 @@ void main() {
   test('custom delimiter', () {
     expect(StringCalculator.add('//;\n1;2'), 3);
   });
+
+  test('negative number throws exception', () {
+    expect(
+      () => StringCalculator.add('1,-2'),
+      throwsA(
+        predicate(
+          (e) => e.toString().contains('negative numbers not allowed -2'),
+        ),
+      ),
+    );
+  });
 }
