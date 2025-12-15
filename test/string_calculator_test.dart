@@ -36,4 +36,15 @@ void main() {
       ),
     );
   });
+
+  test('multiple negatives listed', () {
+    expect(
+      () => StringCalculator.add('1,-2,-3'),
+      throwsA(
+        predicate(
+          (e) => e.toString().contains('negative numbers not allowed -2,-3'),
+        ),
+      ),
+    );
+  });
 }
